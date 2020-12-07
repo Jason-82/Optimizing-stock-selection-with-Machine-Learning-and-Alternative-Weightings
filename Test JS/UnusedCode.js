@@ -1,0 +1,6 @@
+//from: My_Account.address,
+        //to: address,
+        //data: BankContract.methods.makeDeposit(branchNum, accountType, acctNum).encodeABI(),
+        //gas: await BankContract.methods.makeDeposit(branchNum, accountType, acctNum).estimateGas({from: My_Account.address}),
+        //value: web3.utils.toHex('5443661'),
+        //gasPrice: await web3.eth.getGasPrice(),

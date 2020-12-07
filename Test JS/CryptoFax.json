@@ -1,0 +1,404 @@
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "branchNumber",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "acctType",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address payable",
+				"name": "Addr",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "acctNum",
+				"type": "uint256"
+			}
+		],
+		"name": "addAcctToBranch",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "Addr",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "branchNum",
+				"type": "uint256"
+			}
+		],
+		"name": "addBranch",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "choice",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "branchNumber",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_Name",
+				"type": "string"
+			}
+		],
+		"name": "createAccount",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "branchName",
+				"type": "string"
+			}
+		],
+		"name": "createBranch",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "branchNum",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "acctType",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "acctNum",
+				"type": "uint256"
+			}
+		],
+		"name": "makeDeposit",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_BankName",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "branchName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "branchNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "AddedBranch",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "BranchNum",
+				"type": "uint256"
+			}
+		],
+		"name": "FindFreeBranchNumber",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "AcctType",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "AcctName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "branchNum",
+				"type": "uint256"
+			}
+		],
+		"name": "getAccountID",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "AcctType",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "branchNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "getAcctAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "branchNum",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "choice",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "acctID",
+				"type": "uint256"
+			}
+		],
+		"name": "getAcctBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "AcctType",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "branchNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "getAcctBalByName",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getBankName",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "branchNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "getBranchAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "Name",
+				"type": "string"
+			}
+		],
+		"name": "getBranchID",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "branchNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "getBranchName",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "Name",
+				"type": "string"
+			}
+		],
+		"name": "goFind",
+		"outputs": [
+			{
+				"internalType": "contract Branch",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
