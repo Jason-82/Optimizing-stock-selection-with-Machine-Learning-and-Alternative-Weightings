@@ -21,6 +21,7 @@ ___
 ___
 ![Initiate Investment](https://i.gyazo.com/3d184caa2332a8d17b2d1f67be511260.gif)
 ![Execute investments](https://i.gyazo.com/474a2a65596d4a498cd46bbdf494bc9c.gif)
-
+___
+![Improvements](IMPROVEMENTS.pdf.png)
 
 
