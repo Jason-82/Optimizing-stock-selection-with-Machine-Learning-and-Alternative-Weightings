@@ -12,3 +12,6 @@ Uses 2 different algorithms to select stocks out of the S&amp;P 500. Then backte
 # Next Steps
 ___
 ## Next, I'd like to have all of these programs run automatically using triggers in AWS Cloudwatch.
+___
+# Some .gifs using AWS Lex:
+![](https://gph.is/g/4wDmGy2)
