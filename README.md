@@ -16,4 +16,8 @@ ___
 # Some .gifs using AWS Lex:
 ![](https://gph.is/g/4wDmGy2)
 
-![MakeDeposit](https://media.giphy.com/media/Hc6e2QsgqEnpN4cd8B/giphy.gif)
+![Add Branch to Bank](https://i.gyazo.com/7089df82692b3475d9c200c6754898c0.gif)
+![Execute investments](https://i.gyazo.com/474a2a65596d4a498cd46bbdf494bc9c.gif)
+![Initiate Investment](https://i.gyazo.com/3d184caa2332a8d17b2d1f67be511260.gif)
+![Create Branch](https://i.gyazo.com/be47f6e024c1fff6688dba702fb0f329.gif)
+
