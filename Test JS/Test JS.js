@@ -1,9 +1,9 @@
 'use strict';
 var myToken;
 var weiToUSD=.001/1000000000000
-var ETHPLORER_API="EK-4LskG-ZW9WYSb-dAAu3"
+var ETHPLORER_API=process.env.ETHPLORER_API
 var PERSONAL_BANK_ACCOUNT="0x4955b811d56A5aE28dd147C0100b756adB90A5e3"
-const ETHERSCAN_API="Y6HRJC1BWBDJF234U51USVPGGGBPEM2T8W"
+const ETHERSCAN_API=process.env.ETHERSCAN_API
 //const Alpaca = require('@alpacahq/alpaca-trade-api')
 //const alpaca = new Alpaca();
 
@@ -112,7 +112,7 @@ async function LookUpAccountAddressByName(My_Account, event, BankContract) {
     else {
         accountType=1;
     }
-    var web3=new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/b2b0259ccd7541938a412ecf9ea62ff1'));
+    var web3=new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER_URL));
     console.log(My_Account.address);
    
     
@@ -197,7 +197,7 @@ async function MakeWithdrawal(event, BankContract, callback) {
     var investmentAccountBalance=event.sessionAttributes['InvestmentAccountBalance']
     var branchNumber=event.currentIntent.slots.BranchNumber;
     var withdrawalNeeded=parseFloat(desiredInvestmentAmount)-parseFloat(investmentAccountBalance)
-    var web3=new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/b2b0259ccd7541938a412ecf9ea62ff1'));
+    var web3=new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER_URL));
     var difference=parseFloat(bankAccountBalance)-withdrawalNeeded
     //event.sessionAttributes
    
@@ -212,7 +212,7 @@ async function MakeWithdrawal(event, BankContract, callback) {
     }
     else {
     
-    var My_Account=await web3.eth.accounts.privateKeyToAccount('0x557410377f41e603f9245f7035993f9a9a03cff00cab8fe6615c8c6a49fd782b')
+    var My_Account=await web3.eth.accounts.privateKeyToAccount(process.env.ETH_PRIVATE_KEY)
     var withdrawalAddress=await LookUpAccountAddressByName(My_Account, event, BankContract);
     var jsonDataAccount=JSON.parse(fs.readFileSync('AccountABI2.json', 'utf-8'));
     
@@ -256,9 +256,9 @@ async function MakeDeposit(event, BankContract, callback) {
     var accountType=event.currentIntent.slots['AccountType'];
     
     var branchNumber=event.currentIntent.slots['BranchNumber'];
-    var web3=new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/b2b0259ccd7541938a412ecf9ea62ff1'));
+    var web3=new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER_URL));
     
-    var My_Account=await web3.eth.accounts.privateKeyToAccount('0x557410377f41e603f9245f7035993f9a9a03cff00cab8fe6615c8c6a49fd782b')
+    var My_Account=await web3.eth.accounts.privateKeyToAccount(process.env.ETH_PRIVATE_KEY)
     
     if (accountType=="Personal") {
         accountType=0;
@@ -319,9 +319,9 @@ async function AddAccountToBranch(event, BankContract, callback) {
     var accountAddress=event.currentIntent.slots['AccountAddress']
     var accountNumber=event.currentIntent.slots['AccountNumber']
     var branchNumber=event.currentIntent.slots['BranchNumber'];
-    var web3=new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/b2b0259ccd7541938a412ecf9ea62ff1'));
+    var web3=new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER_URL));
     
-    var My_Account=await web3.eth.accounts.privateKeyToAccount('0x557410377f41e603f9245f7035993f9a9a03cff00cab8fe6615c8c6a49fd782b')
+    var My_Account=await web3.eth.accounts.privateKeyToAccount(process.env.ETH_PRIVATE_KEY)
     
     if (accountType=="Personal") {
         accountType=0;
@@ -359,7 +359,7 @@ async function AddAccountToBranch(event, BankContract, callback) {
 
 async function GetEntityName(event, BankContract, entityAddress, fileName, web3, callback) {
     var jsonDataEntity=JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-    var My_Account=await web3.eth.accounts.privateKeyToAccount('0x557410377f41e603f9245f7035993f9a9a03cff00cab8fe6615c8c6a49fd782b')
+    var My_Account=await web3.eth.accounts.privateKeyToAccount(process.env.ETH_PRIVATE_KEY)
     var AccountContract=new web3.eth.Contract(jsonDataEntity, entityAddress, {
           from: My_Account.address
     });
@@ -375,11 +375,11 @@ async function CreateControllableAccount(event, BankContract, callback) {
     //var bankContractAddress=await BankContract.options.address;
     event=await SetSpecificSlotsFromAttributes(event, ["BankContractAddress"])
     var bankContractAddress=event.currentIntent.slots['BankContractAddress']
-    var web3=new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/b2b0259ccd7541938a412ecf9ea62ff1'), {
+    var web3=new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER_URL), {
         transactionConfirmationBlocks: 1
     });
     var accountType=event.currentIntent.slots.AccountType;
-    var My_Account=await web3.eth.accounts.privateKeyToAccount('0x557410377f41e603f9245f7035993f9a9a03cff00cab8fe6615c8c6a49fd782b')
+    var My_Account=await web3.eth.accounts.privateKeyToAccount(process.env.ETH_PRIVATE_KEY)
     var Addr=await My_Account.address
     console.log(Addr)
     if (accountType=="Personal") {
@@ -424,7 +424,7 @@ async function CreateControllableAccount(event, BankContract, callback) {
       //  data: TXN1.encodeABI()
     //})
     
-    var My_Account=await web3.eth.accounts.privateKeyToAccount('0x557410377f41e603f9245f7035993f9a9a03cff00cab8fe6615c8c6a49fd782b')
+    var My_Account=await web3.eth.accounts.privateKeyToAccount(process.env.ETH_PRIVATE_KEY)
     web3.eth.defaultAccount = My_Account.address
     
     
@@ -474,9 +474,9 @@ async function CreateAccount(event, BankContract, callback) {
     console.log("HELLO address is")
     console.log(bankContractAddress)
     console.log(event)
-    var web3=new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/b2b0259ccd7541938a412ecf9ea62ff1'));
+    var web3=new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER_URL));
     var accountType=event.currentIntent.slots.AccountType;
-    var My_Account=await web3.eth.accounts.privateKeyToAccount('0x557410377f41e603f9245f7035993f9a9a03cff00cab8fe6615c8c6a49fd782b')
+    var My_Account=await web3.eth.accounts.privateKeyToAccount(process.env.ETH_PRIVATE_KEY)
     
     if (accountType=="Personal") {
         accountType=0;
@@ -530,9 +530,9 @@ async function CreateBranch(event, BankContract, callback){
     
     //var accountType=event.currentIntent.slots.acctType;
     //var accountCode;
-    var web3=new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/b2b0259ccd7541938a412ecf9ea62ff1'));
+    var web3=new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER_URL));
     
-    var My_Account=await web3.eth.accounts.privateKeyToAccount('0x557410377f41e603f9245f7035993f9a9a03cff00cab8fe6615c8c6a49fd782b')
+    var My_Account=await web3.eth.accounts.privateKeyToAccount(process.env.ETH_PRIVATE_KEY)
     
     if (source=="DialogCodeHook") {
        
@@ -700,7 +700,7 @@ exports.handler = (event, context, LambdaCallback) => {
    
     
     
-    var web3=new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/b2b0259ccd7541938a412ecf9ea62ff1'));
+    var web3=new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER_URL));
   var jsonData2;
   
   console.log(path.resolve('CryptoFax.json'));

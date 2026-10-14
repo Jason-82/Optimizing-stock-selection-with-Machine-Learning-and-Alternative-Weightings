@@ -6,10 +6,10 @@ import alpaca_trade_api as tradeapi
 import boto3
 import os
 import urllib3
-ETHPLORER_API="EK-4LskG-ZW9WYSb-dAAu3"
+ETHPLORER_API=os.environ['ETHPLORER_API']
 PERSONAL_BANK_ACCOUNT="0x3c8AF5Eb646b637E2585994e400a7d32F1D58C0b"
 http = urllib3.PoolManager()
-ETHERSCAN_API="Y6HRJC1BWBDJF234U51USVPGGGBPEM2T8W"
+ETHERSCAN_API=os.environ['ETHERSCAN_API']
 ALPACAUSER =str(os.environ['ALPACAUSER'])
 ALPACAPW = str(os.environ['ALPACAPW'])
 api = tradeapi.REST(
